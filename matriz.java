@@ -34,7 +34,7 @@ public class matriz{
   }
   //metodos funcionales
   //metodo esvacia, que mira si una matriz es vacia,que significa que todos los elementos de su matriz son 0.
-  //en el momento en que algun elemento sea distinto a 0, automaticamente para el recorrido y devuelve un false
+  //en el momento en que algun elemento sea distinto a 0, automaticamente para el recorrido y devuelve un false.
   //si una matriz es vacia, quiere decir que esta escalonada y por lo tanto es lo primero que veremos
   public boolean esVacia(){
     booleaan esvacia=true;
