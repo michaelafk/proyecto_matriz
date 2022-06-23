@@ -76,6 +76,37 @@ public class matriz{
     }
     return filaschek;
   }
+  //metodo pivotesCorrectos en donde lo que hacemos es mirar el pivote de una fila, que sera el primer elemento que encontremos de esa fila de tal forma
+  //que sea distinto de 0 y comprobamos si ese pivote cumple con las condiciones.
+  private boolean privotesCorrectos(){
+    int pivote=-1;
+    boolean pivoteCorrecto=false;
+    for(int i=0;i<DIMX;){
+      for(int j=0;j<DIMY;j++){
+        if(matriz[i][j]!=0){
+          //confirmamos que el pivote este en la posicion correcta, es decir en el lado derecho del anterior pivote
+          if(j>pivote){
+            //guardamos esa posicion en pivote
+            pivote=j;
+            //confirmamos que ese pivote tiene todas las posiciones posteriores de su columna pivote en 0
+            if(pivote(i,pivote)){
+              privoteCorrecto=true;
+            }
+            else{
+              //si hay algun pivote que no lo cumple, pues paramos el recorrido
+              pivoteCorrecto=false;
+              break;
+            } 
+          }
+          //cuando hayamos encontrado ya el pivote y hayamos visto que cumple la condicion de ser pivote pues pasamos a la siguiente fila y 
+          //inicializamos otravez j a 0.
+          i++;
+          j=0;
+        }
+      } 
+    }
+    return pivoteCorrecto;
+  }
   //metodo filaVacia que tiene  como ebjetivo ver si la fila que le pasamos por parametro es vacia o no
   private boolean filaVacia(int []) p){
     boolean filavacia=false;
@@ -89,5 +120,19 @@ public class matriz{
         }
     }
     return filavacia;
+  }
+  //metodo pivote el cual confirma si un pivote es un pivote real, esto lo hacemos mirando que las posiciones que estan por debajo de el sean 0.
+  private boolean pivote(int i,int pivote){
+    boolean pivote=false;
+    for(int k =i+1; k<DIMX;k++){
+      if(matriz[k][pivote]==0){
+        pivote=true;
+      }
+      else{
+        pivote=false;
+        break;
+      }
+    }
+    return pivote;
   }
   }
