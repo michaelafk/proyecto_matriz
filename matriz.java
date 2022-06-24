@@ -81,11 +81,13 @@ public class matriz {
     //metodo pivotesCorrectos en donde lo que hacemos es mirar el pivote de una fila, que sera el primer elemento que encontremos de esa fila de tal forma
     //que sea distinto de 0 y comprobamos si ese pivote cumple con las condiciones.
 
-    private boolean privotesCorrectos() {
+    public boolean privotesCorrectos() {
         int pivote = -1;
         boolean pivoteCorrecto = false;
-        for (int i = 0; i < DIMX;) {
-            for (int j = 0; j < DIMY; j++) {
+        boolean aux;
+        for (int i = 0; i < DIMX; i++) {
+            aux = true;
+            for (int j = 0; j < DIMY && aux; j++) {
                 if (matriz[i][j] != 0) {
                     //confirmamos que el pivote este en la posicion correcta, es decir en el lado derecho del anterior pivote
                     if (j > pivote) {
@@ -94,16 +96,13 @@ public class matriz {
                         //confirmamos que ese pivote tiene todas las posiciones posteriores de su columna pivote en 0
                         if (pivote(i, pivote)) {
                             pivoteCorrecto = true;
+                            aux = false;
                         } else {
                             //si hay algun pivote que no lo cumple, pues paramos el recorrido
                             pivoteCorrecto = false;
                             break;
                         }
                     }
-                    //cuando hayamos encontrado ya el pivote y hayamos visto que cumple la condicion de ser pivote pues pasamos a la siguiente fila y 
-                    //inicializamos otravez j a 0.
-                    i++;
-                    j = 0;
                 }
             }
         }
