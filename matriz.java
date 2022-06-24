@@ -137,6 +137,7 @@ public class matriz {
         return pivotex;
     }
     
+    @overrride
     private String toString(){
         String aux="";
         for(int i =0;i<DIMX;i++){
