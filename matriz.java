@@ -136,5 +136,16 @@ public class matriz {
         }
         return pivotex;
     }
+    
+    private String toString(){
+        String aux="";
+        for(int i =0;i<DIMX;i++){
+            for(int j =0;j<DIMY;j++){
+                aux+=matriz[i][j]+" ";
+            }
+            aux+="\n";
+        }
+        return aux;
+    }
 }
 
